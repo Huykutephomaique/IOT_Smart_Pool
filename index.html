@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Smart Pool</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+    <script src="script.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    
+    <!-- Chart configs -->
+    <!--Line-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          'backgroundColor': 'transparent'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <!-- Curve -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' },
+          'backgroundColor': 'transparent'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <!-- Gauge -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Memory', 80],
+          ['CPU', 55],
+          ['Network', 68]
+        ]);
+
+        var options = {
+          width: 400, height: 120,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+
+        setInterval(function() {
+          data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+          chart.draw(data, options);
+        }, 13000);
+        setInterval(function() {
+          data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+          chart.draw(data, options);
+        }, 5000);
+        setInterval(function() {
+          data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
+          chart.draw(data, options);
+        }, 26000);
+      }
+    </script>
+    
+    <!-- Timeline -->
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['timeline']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'President' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows([
+          [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+          [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
+          [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
+
+        chart.draw(dataTable);
+      }
+    </script>
+
+</head>
+  <body>
+    <!-- Header -->
+
+      <div id="topbar" class="header">
+        
+       <div class="general">
+        <a href="#">
+         <img src="https://www.iotevents.org/wp-content/uploads/2017/10/IOT-LOGO-final_transparent-03.png" class="logo"></a>
+         <a href="https://hcmute.edu.vn/">
+         <img src="https://i.pinimg.com/originals/25/29/ff/2529fffff5adec4cc63d0efc7d52a7f4.png" class="spkt-logo">
+         </a>
+        </div>
+        <div class="navbar">	
+          <ul> 
+            <li><a href="#home"> Home</a></li>
+            <li><a href="#chart"> Chart</a></li>
+            <li><a href="#monitor"> Monitor</a></li>
+            <li><a href="#control"> Control</a></li>
+            <li><a href="#contact"> Contact</a></li>
+          
+          </ul>        
+          
+        </div>
+
+      </div>
+       
+       
+
+    
+<div class="container">
+  <!-- General showcase-->
+    <div id="home" class="home">
+      <h1>
+        SWIM SMARTER, NOT HARDER
+      </h1>
+      <p>Temperature: <strong id="temperature"></strong> &deg;C</p>
+      <p>Humidity: <strong id="humidity"></strong> %</p>
+      <p>Light: <strong id="light"></strong></p>
+      <p>Soil Moisture: <strong id="soil"></strong></p>
+      <div class="mainbutton">
+        <button type="button" id="chart-button">
+          <span></span> Chart
+        </button>
+        <button type="button" id="other-button">
+          <span></span> Other
+        </button>      
+      </div>
+    </div>
+      
+  <!-- Content -->
+  <div id="chart" class="chart" style="display:grid;">
+    <h1>Smart Pool IoT</h1>
+       
+    <!-- ====Chart=== -->
+    <div class="Chart1">
+      <!-- Pie Chart -->
+      <div id="piechart" style="width: 600px; height: 500px"></div>
+      
+      <!-- Line Chart-->
+      <div id="curve_chart" style="width: 600px; height: 500px"></div>
+      
+      <!--Gauge-->
+      <div id="chart_div" style="width: 600px; height: 200px;"></div>
+      
+      <!--Timeline-->
+      <div id="timeline" style="width: 600px; height: 200px;"></div>
+    </div>
+  </div>
+
+  <!--Contact-->
+  <div id="contact" class="login-container">
+    <div class="entertain-box">
+      <!--
+        <label for="newuser">Enter your mail here:</label>
+            <input type="text" id="newuser" name="newuser" placeholder="calvinKlein@gmail.com" required>
+            -->
+    </div>
+    <div class="login-box">
+        <form action="" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <input type="submit" value="Log In">
+        </form>
+    </div>
+  </div>
+
+  <!-- button -->
+  
+  </div>
+  <div class="wrapper">	
+		<div class="progress">
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-bath"></i>
+			</a>
+			<div class= "toggle-btn" id="unact">
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class= "toggle-btn active" id="act" >
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+		</div>
+
+		<div class="progress">
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-utensils"></i>
+			</a>
+			<div class= "toggle-btn1" id="unact1">
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class= "toggle-btn1 active" id="act1" >
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+		</div>
+		
+		<div class="progress">
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-tv"></i>
+			</a>
+			<div class= "toggle-btn2" id="unact2">
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class= "toggle-btn2 active" id="act2" >
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+		</div>
+		<div class="progress">
+			<a class = "icon1" >
+				<i class="fas fa-4x fa-bed"></i>
+			</a>
+			<div class= "toggle-btn3" id="unact3">
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+			<div class= "toggle-btn3 active" id="act3" >
+				<div class= "inner-circle">
+	
+				</div>
+			</div>
+		</div>	
+	</div>
+  <script src="/script.js"></script>
+  </body>
+</html>

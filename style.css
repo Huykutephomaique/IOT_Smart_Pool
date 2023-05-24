@@ -1,0 +1,319 @@
+
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem; 
+  }
+  
+  /* Đặt chiều cao cho thanh header */
+  body {
+    padding: 0;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url(https://wallpaperaccess.com/full/902478.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-x: hidden;
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  #topbar {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* màu đen với độ trong suốt 50% */
+    position: relative;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.5s ease-in-out;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    font-family:  sans-serif;
+  }
+  
+  #topbarr.topbar-scrolled {
+    height: -60px;
+  }
+  
+  #topbar.general {
+    align-items: left;
+  }
+  
+  .logo {
+    max-width: 100px;
+    height: auto;
+    margin: 0;
+    position: relative;
+  }
+  
+  .spkt-logo {
+    max-width: 40px;
+    height: auto;
+    margin: 10px;
+    position: absolute;
+  }
+  .navbar {
+    width: 100%;
+    margin-left: 55%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 999;
+    box-sizing: 500px;
+  }
+  .navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0px 20px;
+  
+    position: relative;
+  }
+  .navbar ul li a {
+    text-decoration: none;
+    color: #ffffffff;
+    text-transform: uppercase;
+  }
+  .navbar ul li::after {
+    content: "";
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: width 0.5s ease-in-out; /* Add transition property */
+  }
+  
+  .navbar ul li:hover::after {
+    width: 100%;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
+    height: 3000Fpx;
+  }
+  .home {
+    width: 100%;
+    position: absolute; 
+    top: 60%;
+    left: 50%;
+    text-align: center;
+    color: #ffffff;
+    float: left; /* Add float:left to make the chart div appear after the home div */
+    transform: translate(-50%, -50%);
+  }
+  .home h1 {
+    font-size: 70px;
+    margin-top: 80px;
+  }
+  .home p {
+    margin: 20px auto;
+    font-weight: 100;
+    line-height: 25px;
+  }
+  
+  button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button span {
+    background: #009688;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+  }
+  
+  button:hover span {
+    width: 100%;
+  }
+  
+  #more-info-button szpan {
+    background-color: #009688;
+  }
+  
+  #for-love-button span {
+    background-color: #009688;
+  }
+  
+  .chart {
+  
+    margin: 800px 10% 0 10%;
+   
+   
+  
+  }
+  .chart h1 {
+    width: 1200px;
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+    /* Màu trắng */
+    background-color: #000000;
+    /* Màu đen cho nền tiêu đề */
+ 
+  }  
+  .Chart1{
+    /* margin: 800px 10% 0 10%; */
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    background-color:white;
+  }
+  #chart_div{
+    
+    padding-left: 50px;
+   
+  }
+ 
+
+.login-container{
+    clear: both;   
+    margin:  20px 10% 0 10%;
+
+    height: 600px;
+    width: 80%;
+    place-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color:white;
+}
+.login-box{
+    background-color:  white;
+    width:70%;
+}
+/* Style input fields */
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.entertain-box{
+    width:100%;
+    padding: 0px;
+    height:100%;
+    border: none;
+    background-image: url(https://wallpapercave.com/wp/wp2046124.jpg);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+/* Style login button */
+.login-box input[type="submit"] {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style login button on hover */
+.login-box input[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+
+/* button */
+.wrapper{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.progress {
+  margin: 30px auto;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.toggle-btn, .toggle-btn1, .toggle-btn2, .toggle-btn3{
+width: 80px;
+height: 40px;
+background: gray;
+border-radius: 30px;
+padding:5px;
+transition: all 300ms ease-in-out;
+}
+.toggle-btn > .inner-circle, .toggle-btn1 > .inner-circle, .toggle-btn2 > .inner-circle, .toggle-btn3 > .inner-circle{
+width: 40px;
+height: 40px;
+background: #fff;
+border-radius:50%;
+transition: all 300ms ease-in-out;
+}
+.toggle-btn.active{
+
+background: #2169f3;
+box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+transition-delay: 0.5s;
+}
+.toggle-btn1.active{
+
+background: #f3219c;
+box-shadow: 0 0 10px #f3219c, 0 0 40px #f3219c, 0 0 80px #f3219c;
+transition-delay: 0.5s;
+}
+.toggle-btn2.active{
+
+background: #21ecf3;
+box-shadow: 0 0 10px #21ecf3, 0 0 40px #21ecf3, 0 0 80px #21ecf3;
+transition-delay: 0.5s;
+}
+.toggle-btn3.active{
+background: #a3f321;
+box-shadow: 0 0 10px #a3f321, 0 0 40px #a3f321, 0 0 80px #a3f321;
+transition-delay: 0.5s;
+}
+.toggle-btn.active>.inner-circle,.toggle-btn1.active>.inner-circle,.toggle-btn2.active>.inner-circle,.toggle-btn3.active>.inner-circle{
+margin-left: 40px;
+}
+.icon1{	
+color: #fff;
+margin: 10px auto;
+}
